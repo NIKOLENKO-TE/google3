@@ -35,7 +35,7 @@ public class BasePage {
 
   @Step("Получаем скриншот ошибки и прикрепляем к отчету Allure")
   @Attachment(value = "Screenshot", type = "image/png") // * Вложение в отчет Allure
-  public static byte[] takeScreenshot() {
+  public static byte[] takeScreenshot() { // * Метод для создания скриншота при ошибке теста
     if (driver instanceof TakesScreenshot) {
       TakesScreenshot ts = (TakesScreenshot) driver;
       File scrFile = ts.getScreenshotAs(OutputType.FILE);
@@ -76,7 +76,7 @@ public class BasePage {
     }
   }
 
-  public void pressEnter() {
+  public void pressEnter() { // Метод имитации нажатия клавиши Enter
     new Actions(driver).sendKeys(Keys.ENTER).perform();
   }
 }

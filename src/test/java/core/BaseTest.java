@@ -35,7 +35,7 @@ public class BaseTest {
 
   @AfterAll
   static void afterAll() {
-    //app.stop();
+    app.stop();
     LOGGER.info("**************************** ALL TESTS COMPLETED ****************************");
   }
 }
@@ -49,7 +49,7 @@ class BaseTestLogger implements TestWatcher {
   @Override // * Переопределяем метод testSuccessful класса TestWatcher, который вызывается после успешного выполнения теста
   public void testSuccessful(ExtensionContext context) {
     long endTime = (System.currentTimeMillis() - startTime); // * Вычисляем время выполнения теста
-    //app.stop();
+    app.stop();
     LOGGER.info("PASSED TEST: [{}], TIME for test execution: [{}] ms", context.getRequiredTestMethod().getName(), endTime);
   }
 
@@ -57,7 +57,7 @@ class BaseTestLogger implements TestWatcher {
   public void testFailed(ExtensionContext context, Throwable cause) {
     takeScreenshot();
     long endTime = (System.currentTimeMillis() - startTime);
-   // app.stop();
+    app.stop();
     LOGGER.error("FAILED TEST: [{}], TIME for test execution: [{}] ms", context.getRequiredTestMethod().getName(), endTime);
   }
 
@@ -65,7 +65,7 @@ class BaseTestLogger implements TestWatcher {
   public void testDisabled(ExtensionContext context, Optional<String> reason) {
     takeScreenshot();
     long endTime = (System.currentTimeMillis() - startTime);
-   // app.stop();
+    app.stop();
     LOGGER.warn("DISABLED TEST: [{}], TIME for test execution: [{}] ms", context.getRequiredTestMethod().getName(), endTime);
   }
 
@@ -73,7 +73,7 @@ class BaseTestLogger implements TestWatcher {
   public void testAborted(ExtensionContext context, Throwable cause) {
     takeScreenshot();
     long endTime = (System.currentTimeMillis() - startTime);
-   // app.stop();
+    app.stop();
     LOGGER.warn("ABORTED TEST: [{}], TIME for test execution: [{}] ms", context.getRequiredTestMethod().getName(), endTime);
   }
 }
