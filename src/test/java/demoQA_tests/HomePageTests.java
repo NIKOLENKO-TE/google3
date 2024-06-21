@@ -34,6 +34,7 @@ public class HomePageTests extends BaseTest {
     assertNotNull(homePage.searchResultText, "Текст 'Результаты поиска' не найден");
     basePage.shouldHaveText(homePage.searchResultText, "Результаты поиска",5000);
     printSearchResult();
+    System.out.println("Тест завершен");
   }
 }
 
