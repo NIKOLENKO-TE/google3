@@ -15,7 +15,8 @@ public class AppManager extends BasePage {
   private final String browser;
   public static BasePage basePage;
   public static HomePage homePage;
-  public AppManager(String browser) {
+
+  public AppManager(String browser) { // * Конструктор класса AppManager
     this.browser = browser;
   }
 
@@ -34,7 +35,7 @@ public class AppManager extends BasePage {
     basePage = new BasePage();
     homePage = new HomePage();
     driver.manage().window().maximize();
-    driver.manage().timeouts().implicitlyWait(WAIT_MILLIS_WAIT);
+    driver.manage().timeouts().implicitlyWait(WAIT_MILLIS_WAIT); // * Неявное ожидание для всех элементов на странице
   }
 
   public void stop() {

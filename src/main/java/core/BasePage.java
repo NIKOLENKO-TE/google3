@@ -21,7 +21,7 @@ import java.time.Duration;
 public class BasePage {
   protected static WebDriver driver;
   JavascriptExecutor js;
-  public static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class); // Инструмент для логирования
 
   public BasePage() {
     driver = AppManager.driver;
@@ -29,14 +29,14 @@ public class BasePage {
     PageFactory.initElements(driver, this);
   }
 
-  @Step("Открываем ссылку: [{url}]")
+  @Step("Открываем ссылку: [{url}]") // * Шаг в отчете Allure
   public BasePage open(String url) {
     driver.get(url);
     return this;
   }
 
   @Step("Получаем скриншот ошибки и прикрепляем к отчету Allure")
-  @Attachment(value = "Screenshot", type = "image/png")
+  @Attachment(value = "Screenshot", type = "image/png") // * Вложение в отчет Allure
   public static byte[] takeScreenshot() {
     if (driver instanceof TakesScreenshot) {
       TakesScreenshot ts = (TakesScreenshot) driver;
