@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Fri Jun 21 13:23:02 GMT 2024","Fri Jun 21 13:23:18 GMT 2024","15957","","Тестовый класс для проверки домашней страницы GOOGLE.COM","","demoQA_tests.HomePageTests","searchTest","Find {Котики} on {Google.com} Find {Котики} on {Google.com} :: итерация [1] из [1]",""
