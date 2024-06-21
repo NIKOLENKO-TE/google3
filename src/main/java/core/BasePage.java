@@ -20,12 +20,10 @@ import java.time.Duration;
 
 public class BasePage {
   protected static WebDriver driver;
-  JavascriptExecutor js;
   public static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class); // Инструмент для логирования
 
   public BasePage() {
     driver = AppManager.driver;
-    js = (JavascriptExecutor) driver;
     PageFactory.initElements(driver, this);
   }
 
@@ -58,14 +56,6 @@ public class BasePage {
     element.click();
   }
 
-  @Step("Кликаем по элементу с JS: [{element}]")
-  protected void clickJS(WebElement element, int x, int y) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2)); // ожидание в течение 10 секунд
-    wait.until(ExpectedConditions.elementToBeClickable(element)); // ожидание, пока элемент не станет доступным для клика
-    js.executeScript("window.scrollBy(" + x + "," + y + ")");
-    click(element);
-  }
-
   @Step("Вводим текст: [{text}]")
   public void type(WebElement element, String text) {
     if (text != null) {
@@ -77,12 +67,12 @@ public class BasePage {
 
   // Метод, который будет искать текст в локаторе
   public void shouldHaveText(WebElement element, String text, int timeout) {
-    LOGGER.info("ТЕКСТ ПРОВЕРЕН: [{}] В ЭЛЕМЕНТЕ: [{}]", text, element.getTagName());
+    LOGGER.info("TEXT CHECKED: [{}] IN ELEMENT: [{}]", text, element.getTagName());
     try {
       new WebDriverWait(driver, Duration.ofMillis(timeout)).until(ExpectedConditions.textToBePresentInElement(element, text));
     } catch (TimeoutException e) {
-      LOGGER.error("Текст [{}] не был найден в элементе [{}] в течение [{}] миллисекунд", text, element.getTagName(), timeout);
-      throw new AssertionError("Текст [" + text + "] не был найден в элементе [" + element.getTagName() + "] в течение [" + timeout + "] миллисекунд");
+      LOGGER.error("The text [{}] was not found in the [{}] element within [{}] milliseconds", text, element.getTagName(), timeout);
+      throw new AssertionError("The text [" + text + "] was not found in the [" + element.getTagName() + "]within [" + timeout + "] milliseconds");
     }
   }
 

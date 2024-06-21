@@ -18,10 +18,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[.//div[text()='Принять все']]")
     @FindBy(xpath = "//button[contains(.,'Принять все')]")
   */
-  @FindBy(xpath = "//div[text()='Принять все']") // Локатор для кнопки "Принять все"
+  @FindBy(xpath = "//div[text()='Accept all']") // Локатор для кнопки "Принять все"
   public WebElement acceptAllButton;
 
-  // @FindBy(name = "q") // [name='q'] CSS
   // @FindBy(css = "[name='q']") /
   @FindBy(xpath = "//*[@name='q']") // //*[@name='q'] xpath. Локатор для строки поиска
   public WebElement searchBar;
@@ -29,16 +28,16 @@ public class HomePage extends BasePage {
   @FindBy(id = "search") // Локатор для поля результатов поиска
   public WebElement searchResultField;
 
-  @FindBy(xpath = "//*[@id='search']//*[contains(text(), 'Результаты поиска')]") // Локатор для текста "Результаты поиска"
+  @FindBy(xpath = "//*[@id='search']//*[contains(text(), 'Search Results')]") // Локатор для текста "Результаты поиска"
   public WebElement searchResultText;
 
 
   public List<WebElement> getElements() { // Метод для получения списка элементов
-    return driver.findElements(By.xpath("//*[@id='search']//*[contains(text(), 'котики')]"));
+    return driver.findElements(By.xpath("//*[@id='search']//*[contains(text(), 'kittens')]"));
   }
   public static void printSearchResult() { // Метод для вывода результатов поиска
     if (homePage.getElements().isEmpty()) {
-      System.out.println("Список элементов пуст");
+      System.out.println("List of elements is empty");
     } else {
       for (WebElement element : homePage.getElements()) {
         String text = element.getText();

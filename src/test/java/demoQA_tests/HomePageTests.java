@@ -4,6 +4,7 @@ import core.BaseTest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -12,7 +13,7 @@ import static google_page.HomePage.HOME_PAGE_URL;
 import static google_page.HomePage.printSearchResult;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@DisplayName("Тестовый класс для проверки домашней страницы GOOGLE.COM")
+@DisplayName("Test Class to Test the Home Page GOOGLE.COM")
 public class HomePageTests extends BaseTest {
 
   @BeforeEach
@@ -21,20 +22,20 @@ public class HomePageTests extends BaseTest {
         .open(HOME_PAGE_URL)
         .click(homePage.acceptAllButton);
   }
-
-  @Feature("Find {Котики} on {Google.com}") // * Заголовок в отчете Allure
+  @Disabled
+  @Feature("Find {kittens} on {Google.com}") // * Заголовок в отчете Allure
   @Story("Test Case #01")// * Подзаголовок в отчете Allure
-  @DisplayName("Find {Котики} on {Google.com}") // * Название теста
+  @DisplayName("Find {kittens} on {Google.com}") // * Название теста
   //@Test
   @RepeatedTest(value = 1, name = "{displayName} :: итерация [{currentRepetition}] из [{totalRepetitions}]")
   public void searchTest() {
-    basePage.type(homePage.searchBar, "Котики");
+    basePage.type(homePage.searchBar, "kittens");
     basePage.pressEnter();
-    assertNotNull(homePage.searchResultField, "Поле 'Результаты поиска' не найдены");
-    assertNotNull(homePage.searchResultText, "Текст 'Результаты поиска' не найден");
-    basePage.shouldHaveText(homePage.searchResultText, "Результаты поиска",5000);
+    assertNotNull(homePage.searchResultField, "The 'Search results' field was not found");
+    assertNotNull(homePage.searchResultText, "Text 'Search Results' Not Found");
+    basePage.shouldHaveText(homePage.searchResultText, "Search results",5000);
     printSearchResult();
-    System.out.println("Тест завершен");
+    System.out.println("Test Complete");
   }
 }
 

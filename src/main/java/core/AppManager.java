@@ -3,7 +3,6 @@ package core;
 import google_page.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
@@ -20,15 +19,11 @@ public class AppManager extends BasePage {
     this.browser = browser;
   }
 
-
   public void init() {
     if (browser.equalsIgnoreCase("chrome")) {
-      driver = new ChromeDriver();
+      driver = new ChromeDriver(); // * Создаем экземпляр драйвера Chrome
     } else if (browser.equalsIgnoreCase("firefox")) {
-      driver = new FirefoxDriver();
-    } else if (browser.equalsIgnoreCase("edge")) {
-      System.setProperty("webdriver.edge.driver", "src/main/resources/msedgedriver.exe");
-      driver = new EdgeDriver();
+      driver = new FirefoxDriver(); // * Создаем экземпляр драйвера Firefox
     } else {
       throw new IllegalArgumentException("Unsupported browser: " + browser);
     }
